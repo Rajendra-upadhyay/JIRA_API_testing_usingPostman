@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "57aa2f51-14b6-4fcd-a289-2755438a6f71",
+		"name": "JIRA_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/rest/api/2/dashboard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rest/api/2/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/rest/api/2/user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{AdminPassword}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{AdminUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"charlieraj\",\r\n    \"password\": \"abracadabra\",\r\n    \"emailAddress\": \"charlie@atlassian.com\",\r\n    \"displayName\": \"Charlie of Atlassian\",\r\n    \"applicationKeys\": [\r\n        \"jira-core\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/rest/api/2/user",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"user"
+					]
+				},
+				"description": "Create User"
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/rest/api/2/user?key={{key}}",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{AdminPassword}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{AdminUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"eddie\",\r\n    \"emailAddress\": \"eddie@atlassian.com\",\r\n    \"displayName\": \"Eddie of Atlassian\",\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/rest/api/2/user?key={{key}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"user"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						}
+					]
+				},
+				"description": "Update user details"
+			},
+			"response": []
+		},
+		{
+			"name": "{{BaseURL}}/rest/api/2/user?username=charlieraj",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/rest/api/2/user?key={{key}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"user"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						}
+					]
+				},
+				"description": "get user details"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
